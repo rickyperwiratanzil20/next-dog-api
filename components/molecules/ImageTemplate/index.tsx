@@ -6,14 +6,17 @@ const ImageTemplate:  React.FunctionComponent<{
   Gambar : string,
 }>= (props) => {
   const [cookie, setCookie] = useCookies(["image"]);
-  const oldImage = cookie.image;
 
   const getImage = () => {
-    setCookie("image", "https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg", {
+    const dataArray = cookie.image;
+    dataArray.push(props.Gambar);
+
+    setCookie("image", dataArray, {
       path: "/",
       maxAge: 3600, // Expires after 1hr
       sameSite: true,
     })
+    console.log(cookie.image);
   }
 
   return(
