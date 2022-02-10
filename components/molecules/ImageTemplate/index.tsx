@@ -8,7 +8,8 @@ const ImageTemplate:  React.FunctionComponent<{
   const [cookie, setCookie] = useCookies(["image"]);
 
   const getImage = () => {
-    const dataArray = cookie.image;
+    let dataArray = [];
+    dataArray = cookie.image;
     dataArray.push(props.Gambar);
 
     setCookie("image", dataArray, {
@@ -16,7 +17,6 @@ const ImageTemplate:  React.FunctionComponent<{
       maxAge: 3600, // Expires after 1hr
       sameSite: true,
     })
-    console.log(cookie.image);
   }
 
   return(

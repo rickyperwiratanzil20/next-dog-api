@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Form from '../components/molecules/Form';
 import ImageTemplate from '../components/molecules/ImageTemplate';
 
 export default function Test({dataDog}: any, dataArray: []) {
@@ -26,7 +27,7 @@ export default function Test({dataDog}: any, dataArray: []) {
     const submitInput = (event: React.ChangeEvent<HTMLFormElement>) => {
         event.preventDefault();
         getData();
-    } 
+    }
 
     useEffect(()=>{
         setListData(dataArray);
@@ -34,10 +35,7 @@ export default function Test({dataDog}: any, dataArray: []) {
 
   return(
       <div>
-        <form onSubmit={submitInput} className="d-flex mt-2">
-            <input id="input-anjing" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={getInput}/>
-            <button className="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <Form onSubmit={submitInput} onChange={getInput} />
         <div className='d-flex flex-row flex-wrap'>
         {listData.length != 0 ? 
         listData.map((dog)=>(
